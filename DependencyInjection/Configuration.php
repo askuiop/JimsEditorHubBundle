@@ -20,18 +20,17 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('jims_editor_hub');
-        //$rootNode = $treeBuilder->root('ueditor');
 
         $rootNode
             ->children()
                 ->arrayNode('ueditor')
                 ->children()
                     ->scalarNode('config_file')
-                        ->defaultValue("%kernel.root_dir%/../src/Jims/EditorHubBundle/Resources/config/config.json")
+                        ->defaultValue("Resources/config/config.json")
                         ->validate()
                             ->ifTrue(function ($v) { return empty($v); })
                             ->then(function ($v) {
-                                return "%kernel.root_dir%/../src/Jims/EditorHubBundle/Resources/config/config.json";
+                                return "Resources/config/config.json";
                             })
                         ->end()
                     ->end()
@@ -60,28 +59,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
              ->end();
-
-        $rootNode
-          ->fixXmlConfig('form_theme')
-            ->children()
-                ->arrayNode('form_themes')
-                    ->addDefaultChildrenIfNoneSet()
-                    ->prototype('scalar')->defaultValue('form_div_layout.html.twig')->end()
-                ->end()
-            ->end();
-
-
-     //  ->fixXmlConfig('form_theme')
-     //->children()
-     //->arrayNode('form_themes')
-     //->addDefaultChildrenIfNoneSet()
-     //->prototype('scalar')->defaultValue('form_div_layout.html.twig')->end()
-
-     //->end()
-     //->end();
-
-
-
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

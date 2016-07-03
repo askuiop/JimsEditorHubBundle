@@ -9,7 +9,7 @@ class UmeditorController extends Controller
 {
     public function imageUpAction()
     {
-        $user_config = $this->getParameter('jims_addon_umeditor');
+        $user_config = $this->getParameter('jims_umeditor');
         //上传配置
         $config = array(
           "savePath" => $user_config['save_path'] ,             //存储文件夹

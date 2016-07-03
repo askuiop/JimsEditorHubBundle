@@ -23,11 +23,11 @@ class JimsEditorHubExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         if (!empty($config['ueditor'])) {
-            $container->setParameter("jims_addon_ueditor", $config['ueditor']);
+            $container->setParameter("jims_ueditor", $config['ueditor']);
         }
 
         if (!empty($config['umeditor'])) {
-            $container->setParameter("jims_addon_umeditor", $config['umeditor']);
+            $container->setParameter("jims_umeditor", $config['umeditor']);
         }
 
 

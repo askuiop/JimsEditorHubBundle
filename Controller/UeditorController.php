@@ -15,9 +15,11 @@ class UeditorController extends Controller
         $config_path = $this->get('kernel')->getRootDir(). "/../src/Jims/EditorHubBundle/Resources/public/ueditor/php/";
         #$config_path = $this->container->getParameter('kernel.root_dir') . '/../web/bundles/yourbundle/';*/
 
-        $config = $this->getParameter('jims_addon_ueditor');
-        $config_file = $config['config_file'];
-
+        $config = $this->getParameter('jims_ueditor');
+        if ($config['config_file'] == 'Resources/config/config.json') {
+            $config_file = __DIR__."/../".$config['config_file'];
+        }
+        
         $this->CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents($config_file)), true);
     }
 
