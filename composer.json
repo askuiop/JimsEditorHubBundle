@@ -1,0 +1,26 @@
+{
+  "name": "jims/editor-hub-bundle",
+  "type": "symfony-bundle",
+  "description": "Provides a ueditor and umeditor for Symfony 2/3.",
+  "keywords": [ "ueditor", "editor", "umeditor" ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jims wu",
+      "email": "askfilm918@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^5.3.3|^7.0",
+    "symfony/framework-bundle": "^2.3|^3.0",
+    "symfony/form": "^2.3|^3.0",
+    "twig/twig": "^1.1"
+  },
+  "require-dev": {
+    "symfony/twig-bundle": "^2.3|^3.0",
+    "symfony/yaml": "^2.3|^3.0"
+  },
+  "autoload": {
+    "psr-4": { "Jims\\EditorHubBundle\\": "" }
+  }
+}
