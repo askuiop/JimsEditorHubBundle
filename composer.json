@@ -1,5 +1,6 @@
 {
   "name": "jims/editor-hub-bundle",
+  "minimum-stability": "dev",
   "type": "symfony-bundle",
   "description": "ueditor and umeditor for Symfony 2/3.",
   "keywords": [ "ueditor", "editor", "umeditor" ],
