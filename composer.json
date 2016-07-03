@@ -1,7 +1,7 @@
 {
   "name": "jims/editor-hub-bundle",
   "type": "symfony-bundle",
-  "description": "Provides a ueditor and umeditor for Symfony 2/3.",
+  "description": "ueditor and umeditor for Symfony 2/3.",
   "keywords": [ "ueditor", "editor", "umeditor" ],
   "license": "MIT",
   "authors": [
