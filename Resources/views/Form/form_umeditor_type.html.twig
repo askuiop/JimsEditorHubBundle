@@ -1,0 +1,42 @@
+{% block umeditor_widget %}
+
+    <link href="{{ asset('bundles/jimseditorhub/umeditor/themes/default/css/umeditor.css') }}" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/umeditor/third-party/jquery.min.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/umeditor/umeditor.config.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/umeditor/umeditor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/umeditor/lang/zh-cn/zh-cn.js') }}"></script>
+
+    <script id="editor-container" {{ block('editor_attributes') }} type="text/plain"></script>
+
+    {% if attr.script is defined and attr.script is not empty %}
+    <!-- 自定义js -->
+    <script type="text/javascript">
+        {{ attr.script|raw }}
+    </script>
+    {% endif %}
+
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        {% if app.environment=='dev' %}
+        window.UMEDITOR_CONFIG.imageUrl = "/app_dev.php/umeditor";
+        {% endif %}
+        var um = UM.getEditor('editor-container');
+    </script>
+{% endblock umeditor_widget %}
+
+
+{%- block editor_attributes -%}
+    id="{{ id }}" name="{{ full_name }}"
+    {%- if disabled %} disabled="disabled"{% endif -%}
+    {%- if required %} required="required"{% endif -%}
+    {%- for attrname, attrvalue in attr if attrname not in ['script'] -%}
+        {{- " " -}}
+        {%- if attrname in ['placeholder', 'title'] -%}
+            {{- attrname }}="{{ translation_domain is same as(false) ? attrvalue : attrvalue|trans({}, translation_domain) }}"
+        {%- elseif attrvalue is same as(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not same as(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{%- endblock editor_attributes -%}

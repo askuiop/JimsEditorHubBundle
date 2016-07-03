@@ -1,0 +1,9 @@
+jims_test_homepage:
+    path:     /ueditor/test
+    defaults: { _controller: JimsEditorHubBundle:Default:index }
+ueditor:
+    path:     /ueditor
+    defaults: { _controller: JimsEditorHubBundle:Ueditor:index }
+umeditor:
+    path:     /umeditor
+    defaults: { _controller: JimsEditorHubBundle:Umeditor:imageUp }
