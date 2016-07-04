@@ -1,5 +1,5 @@
 {% block ueditor_widget %}
-    <script id="editor-container" {{ block('editor_attributes') }} type="text/plain">{% if value is not empty %} {{ value|raw }} {% endif %}</script>
+    <script id="editor-container" {{ block('editor_attributes') }} type="text/plain"></script>
     <!-- 配置文件 -->
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}"></script>
     <!-- 编辑器源码文件 -->
