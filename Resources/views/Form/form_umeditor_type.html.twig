@@ -25,7 +25,7 @@
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
         {% if app.environment=='dev' %}
-        window.UMEDITOR_CONFIG.imageUrl = "/app_dev.php/umeditor";
+        window.UMEDITOR_CONFIG.imageUrl = window.UMEDITOR_CONFIG.imageDevUrl;
         {% endif %}
         var um = UM.getEditor('editor-container');
     </script>

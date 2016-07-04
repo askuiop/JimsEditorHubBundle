@@ -17,7 +17,7 @@
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
         {% if app.environment=='dev' %}
-            window.UEDITOR_CONFIG.serverUrl = "/app_dev.php/ueditor";
+            window.UEDITOR_CONFIG.serverUrl = window.UEDITOR_CONFIG.serverDevUrl;
         {% endif %}
         var ue = UE.getEditor('editor-container');
     </script>
