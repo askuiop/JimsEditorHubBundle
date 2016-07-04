@@ -38,7 +38,16 @@
     resource: "@JimsEditorHubBundle/Resources/config/routing.yml"
     prefix:   /
   ```
-  4.Step 4 添加设置bundle 配置 于 app/config/config.yml
+  4.Step 4 Import form themes to app/config/config.yml
+  ```yml
+  //app/config/config.yml
+  twig:
+    ...
+    form_themes:
+        - 'JimsEditorHubBundle:Form:form_ueditor_type.html.twig'
+        - 'JimsEditorHubBundle:Form:form_umeditor_type.html.twig'
+  ```
+  5.Step 5 添加设置bundle 配置 于 app/config/config.yml
   ```yml
   //app/config/config.yml
   jims_editor_hub:
