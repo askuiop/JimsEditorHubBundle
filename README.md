@@ -11,7 +11,7 @@
   ```
   {
       "require": {
-         "kms/froala-editor-bundle": "^1.0"
+         "jims/editor-hub-bundle": "^1.0"
       }
   }
   
@@ -64,6 +64,7 @@
 ### symony3:
   ```php
     use Jims\EditorHubBundle\Form\UeditorType;
+    use Jims\EditorHubBundle\Form\UmeditorType;
     ...
     ...
       #使用ueditor
