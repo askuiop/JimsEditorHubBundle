@@ -11,15 +11,12 @@
   ```
   {
       "require": {
-         "kms/froala-editor-bundle": "dev-master"
+         "kms/froala-editor-bundle": "^1.0"
       }
   }
   
-  then
-  
-  $ composer update
   ```
-  2.Step 2 添加到appKernel.php
+  2.Step 2 添加到appKernel.php  同时 更新资源
   ```php
   // app/AppKernel.php
 
@@ -30,6 +27,11 @@
           new Jims\EditorHubBundle\JimsEditorHubBundle(),
       );
   }
+  
+  //then update assets 更新资源:
+  
+  app/console assets:install web --symlink   #sf2
+  bin/console assets:install web --symlink   #sf3
   ```
   3.Step 3 Import routes to app/config/routing.yml
   ```yml
