@@ -13,6 +13,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 
 class UeditorType extends AbstractType
 {
@@ -25,10 +27,27 @@ class UeditorType extends AbstractType
   }
   public function configureOptions(OptionsResolver $resolver)
   {
+    $resolver->setDefined('js_script');
+    $resolver->setRequired('js_script');
+    $resolver->setAllowedTypes('js_script', 'string');
+    
     $resolver->setDefaults(array(
-
+        'js_script' => '',
     ));
+
   }
+
+
+  public function buildView(FormView $view, FormInterface $form, array $options)
+  {
+    //$view->offsetSet('jsx', $options['jsx']);
+    //$view->vars->set('jsx', $options['jsx']);
+    //$view->set('jsx', $options['jsx']);
+    $view->vars['js_script'] = $options['js_script'];
+
+  }
+
+
 
   public function getParent()
   {

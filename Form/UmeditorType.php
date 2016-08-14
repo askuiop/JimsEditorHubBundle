@@ -24,8 +24,12 @@ class UmeditorType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefined('js_script');
+        $resolver->setRequired('js_script');
+        $resolver->setAllowedTypes('js_script', 'string');
 
+        $resolver->setDefaults(array(
+          'js_script' => '',
         ));
 
     }

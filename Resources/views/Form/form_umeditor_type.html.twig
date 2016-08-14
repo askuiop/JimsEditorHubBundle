@@ -13,13 +13,13 @@
     <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/umeditor/umeditor.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/umeditor/lang/zh-cn/zh-cn.js') }}"></script>#}
 
-    <script id="editor-container" {{ block('editor_attributes') }} type="text/plain"></script>
+    <script id="editor-container" {{ block('widget_attributes') }} type="text/plain">{% if value is defined and js_script is not empty   %}{{ value|raw }}{% endif %}</script>
 
-    {% if attr.script is defined and attr.script is not empty %}
-    <!-- 自定义js -->
-    <script type="text/javascript">
-        {{ attr.script|raw }}
-    </script>
+    {% if js_script is defined and js_script is not empty %}
+        <!-- 自定义js -->
+        <script type="text/javascript">
+            {{ js_script|raw }}
+        </script>
     {% endif %}
 
     <!-- 实例化编辑器 -->
@@ -32,18 +32,3 @@
 {% endblock umeditor_widget %}
 
 
-{%- block editor_attributes -%}
-    id="{{ id }}" name="{{ full_name }}"
-    {%- if disabled %} disabled="disabled"{% endif -%}
-    {%- if required %} required="required"{% endif -%}
-    {%- for attrname, attrvalue in attr if attrname not in ['script'] -%}
-        {{- " " -}}
-        {%- if attrname in ['placeholder', 'title'] -%}
-            {{- attrname }}="{{ translation_domain is same as(false) ? attrvalue : attrvalue|trans({}, translation_domain) }}"
-        {%- elseif attrvalue is same as(true) -%}
-            {{- attrname }}="{{ attrname }}"
-        {%- elseif attrvalue is not same as(false) -%}
-            {{- attrname }}="{{ attrvalue }}"
-        {%- endif -%}
-    {%- endfor -%}
-{%- endblock editor_attributes -%}

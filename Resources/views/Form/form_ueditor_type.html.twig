@@ -1,5 +1,7 @@
 {% block ueditor_widget %}
-    <script id="editor-container" {{ block('editor_attributes') }} type="text/plain"></script>
+    <script id="editor-container" {{ block('widget_attributes') }} type="text/plain">
+        {%- if value is defined and js_script is not empty   %}{{- value|raw -}}{% endif -%}
+    </script>
     <!-- 配置文件 -->
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}"></script>
     <!-- 编辑器源码文件 -->
@@ -7,11 +9,12 @@
 
     <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
 
-    {% if attr.script is defined and attr.script is not empty %}
-        <!-- 自定义js -->
-        <script type="text/javascript">
-            {{ attr.script|raw }}
-        </script>
+
+    {% if js_script is defined and js_script is not empty %}
+    <!-- 自定义js -->
+    <script type="text/javascript">
+    {{ js_script|raw }}
+    </script>
     {% endif %}
 
     <!-- 实例化编辑器 -->
@@ -22,4 +25,3 @@
         var ue = UE.getEditor('editor-container');
     </script>
 {% endblock ueditor_widget %}
-
