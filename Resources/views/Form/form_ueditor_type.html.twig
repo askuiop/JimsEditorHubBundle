@@ -1,6 +1,6 @@
 {% block ueditor_widget %}
     <script id="editor-container" {{ block('widget_attributes') }} type="text/plain">
-        {%- if value is defined and js_script is not empty   %}{{- value|raw -}}{% endif -%}
+        {%- if value is defined and value is not empty   %}{{- value|raw -}}{% endif -%}
     </script>
     <!-- 配置文件 -->
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}"></script>
