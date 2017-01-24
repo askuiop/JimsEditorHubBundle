@@ -72,16 +72,15 @@
             "attr" => array(
                 "style" => "height:400px;width:600px;", //editor转换成编辑器编辑空间尺寸
                 "class"=>"jims",
-                //通过自定义js, 控制editor toolbars
-                #"script" => "window.UEDITOR_CONFIG.toolbars=[['fullscreen', 'source', 'undo', 'redo', 'bold']]"
             ),
+            //通过自定义js, 控制editor toolbars
+            'js_script' => "window.UEDITOR_CONFIG.toolbars=[['fullscreen', 'source', 'undo', 'redo', 'bold']]",
         ))
         #使用umeditor
         //->add('content', UmeditorType::class, array(
         //    "attr" => array(
         //        "style" => "width:555px;",
         //        "class"=>"jims",
-        //        "script"=>'console.log("This is a ueditor bundle!")'
         //    ),
         //))
   ```
@@ -92,16 +91,15 @@
             "attr" => array(
                 "style" => "height:400px;width:600px;", //editor转换成编辑器编辑空间尺寸
                 "class"=>"jims",
-                //通过自定义js, 控制editor toolbars
-                #"script" => "window.UEDITOR_CONFIG.toolbars=[['fullscreen', 'source', 'undo', 'redo', 'bold']]"
             ),
+            //通过自定义js, 控制editor toolbars
+            'js_script' => "window.UEDITOR_CONFIG.toolbars=[['fullscreen', 'source', 'undo', 'redo', 'bold']]",
         ))
         #使用umeditor
         //->add('content', "umeditor", array(
         //    "attr" => array(
         //        "style" => "width:555px;",
         //        "class"=>"jims",
-        //        "script"=>'console.log("This is a ueditor bundle!")'
         //    ),
         //))
   ```
