@@ -8,6 +8,11 @@
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.all.js') }} "></script>
 
     <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+    <!-- 公式编辑器源码文件 -->
+     <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/kityformula-plugin/addKityFormulaDialog.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/kityformula-plugin/getKfContent.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/kityformula-plugin/defaultFilterFix.js') }}"></script>
+
 
 
     {% if js_script is defined and js_script is not empty %}
@@ -24,4 +29,21 @@
         {% endif %}
         var ue = UE.getEditor('editor-container');
     </script>
+
+    <!-- 公式编辑器 -->
+    <script type="text/javascript">
+        var form = document.forms[1];
+        form.onsubmit = function(){
+            kfSubmit();
+            return false;
+        };
+        var kfSubmit = function(){
+            ue.getKfContent(function(content){
+                form.submit();
+            })
+        }
+
+
+    </script>
+
 {% endblock ueditor_widget %}
