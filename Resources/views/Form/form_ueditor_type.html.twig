@@ -1,13 +1,21 @@
 {% block ueditor_widget %}
-    <script id="editor-container" {{ block('widget_attributes') }} type="text/plain">
+    <script  {{ block('widget_attributes') }} type="text/plain">
         {%- if value is defined and value is not empty   %}{{- value|raw -}}{% endif -%}
     </script>
+
     <!-- 配置文件 -->
-    <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}"></script>
+
+    <script type="text/javascript">
+        window.UEDITOR_CONFIG || document.write("<script src='{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}'>"+"</"+"script>");
+        window.UE || document.write("<script src='{{ asset('bundles/jimseditorhub/ueditor/ueditor.all.js') }}'>"+"</"+"script>" +
+            "<script src='{{ asset('bundles/jimseditorhub/ueditor/lang/zh-cn/zh-cn.js') }}'>"+"</"+"script>" );
+    </script>
+
+
+{#    <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.config.js') }}"></script>
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/ueditor/ueditor.all.js') }} "></script>
-
-    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/ueditor/lang/zh-cn/zh-cn.js') }}"></script>#}
 
 
     {% if js_script is defined and js_script is not empty %}
@@ -22,6 +30,8 @@
         {% if app.environment=='dev' %}
             window.UEDITOR_CONFIG.serverUrl = window.UEDITOR_CONFIG.serverDevUrl;
         {% endif %}
-        var ue = UE.getEditor('editor-container');
+        window.UEDITOR_CONFIG.wordCount = true;
+        window.UEDITOR_CONFIG.maximumWords = 20000;
+        var ue = UE.getEditor('{{ id }}');
     </script>
 {% endblock ueditor_widget %}

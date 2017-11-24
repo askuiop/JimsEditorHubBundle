@@ -2,7 +2,7 @@
 
     <link href="{{ asset('bundles/jimseditorhub/umeditor/themes/default/css/umeditor.css') }}" type="text/css" rel="stylesheet">
     <script type="text/javascript">
-        window.jQuery || document.write("<script src='{{ asset('bundles/jimseditorhub/umeditor/third-party/jquery.min.js') }}'>"+"</"+"script>");
+        window.$ || window.jQuery || document.write("<script src='{{ asset('bundles/jimseditorhub/umeditor/third-party/jquery.min.js') }}'>"+"</"+"script>");
         window.UMEDITOR_CONFIG || document.write("<script src='{{ asset('bundles/jimseditorhub/umeditor/umeditor.config.js') }}'>"+"</"+"script>");
         window.UM || document.write("<script src='{{ asset('bundles/jimseditorhub/umeditor/umeditor.min.js') }}'>"+"</"+"script>");
         window.UM || document.write("<script src='{{ asset('bundles/jimseditorhub/umeditor/lang/zh-cn/zh-cn.js') }}'>"+"</"+"script>");
@@ -13,7 +13,7 @@
     <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/jimseditorhub/umeditor/umeditor.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/jimseditorhub/umeditor/lang/zh-cn/zh-cn.js') }}"></script>#}
 
-    <script id="editor-container" {{ block('widget_attributes') }} type="text/plain">{% if value is defined and value is not empty   %}{{ value|raw }}{% endif %}</script>
+    <script  {{ block('widget_attributes') }} type="text/plain">{% if value is defined and value is not empty   %}{{ value|raw }}{% endif %}</script>
 
     {% if js_script is defined and js_script is not empty %}
         <!-- 自定义js -->
@@ -27,7 +27,7 @@
         {% if app.environment=='dev' %}
         window.UMEDITOR_CONFIG.imageUrl = window.UMEDITOR_CONFIG.imageDevUrl;
         {% endif %}
-        var um = UM.getEditor('editor-container');
+        var um = UM.getEditor('{{ id }}');
     </script>
 {% endblock umeditor_widget %}
 
