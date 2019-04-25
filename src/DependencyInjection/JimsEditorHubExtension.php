@@ -4,6 +4,7 @@ namespace Jims\EditorHubBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -12,7 +13,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class JimsEditorHubExtension extends Extension
+class JimsEditorHubExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -30,8 +31,24 @@ class JimsEditorHubExtension extends Extension
             $container->setParameter("jims_umeditor", $config['umeditor']);
         }
 
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
+
+    public function prepend(ContainerBuilder $container)
+    {
+        if (!$container->hasExtension('twig')) {
+            return ;
+        }
+        //$args = $container->getExtensionConfig('twig');
+
+        $formThemePath  = '@JimsEditorHub/Form/ueditor_and_umeditor_type.html.twig';
+
+        $container->prependExtensionConfig('twig', [
+            'form_themes' => [ $formThemePath ]
+        ]);
+
+    }
+
+
 }
