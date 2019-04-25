@@ -2,7 +2,9 @@
  ueditor and umeditor for Symfony 2/3. 为方便使用和学习而整合了ueditor 和 umeditor ，编辑器本身未改动多少以免带来混乱和轮子。 关于ueditor 的相关配置请参考官方文档。
  
 ## 安装 
- 
+
+ symfony > 3.3 请使用 2.0 版本
+
   1.Step 1 composer 安装
   ```
   composer require jims/editor-hub-bundle
