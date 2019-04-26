@@ -37,7 +37,6 @@ class UeditorType extends AbstractType
 
   }
 
-
   public function buildView(FormView $view, FormInterface $form, array $options)
   {
     //$view->offsetSet('jsx', $options['jsx']);
@@ -47,14 +46,9 @@ class UeditorType extends AbstractType
 
   }
 
-
-
   public function getParent()
   {
-    if ($this->major_version==3) {
       return TextareaType::class;
-    }
-    return 'textarea';
   }
 
   public function getName()

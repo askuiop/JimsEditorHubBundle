@@ -36,10 +36,7 @@ class UmeditorType extends AbstractType
 
     public function getParent()
     {
-        if ($this->major_version==3) {
-            return TextareaType::class;
-        }
-        return 'textarea';
+        return TextareaType::class;
     }
 
 
