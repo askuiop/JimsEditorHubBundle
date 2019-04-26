@@ -18,7 +18,7 @@
   }
   
   ```
-  2.Step 2 添加到appKernel.php  同时 更新资源 （自动操作）
+  2.Step 2 添加到config/bundles.php  同时更新资源
   ```php
   // config/bundles.php
 
