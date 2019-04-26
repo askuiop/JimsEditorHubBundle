@@ -70,5 +70,7 @@
         //    ),
         //))
   ```
-  
- 
+### 效果
+![umeditor](https://i.loli.net/2019/04/26/5cc2792409c42.png)
+![ueditor](https://i.loli.net/2019/04/26/5cc2792488382.png)
+
